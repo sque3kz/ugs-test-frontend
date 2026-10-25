@@ -1866,6 +1866,8 @@ button { font: inherit; cursor: pointer; }
   .shot.wide { grid-column: span 2; }
   .caption small { display: none; }
   .trainers { --show: 1; --gap: 14px; }
+  /* One trainer in view: they keep their size, so the incoming one doesn't grow mid-swipe and look like it jumps */
+  .has-focus .trainer-wrap:not(.is-center) > * { scale: none; }
   .trainer-wrap { scroll-snap-align: center; }
   .programs { grid-template-columns: 1fr; }
   .program { min-height: 400px; }
