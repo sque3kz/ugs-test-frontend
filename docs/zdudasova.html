@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="sk">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="robots" content="noindex, nofollow" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title data-i18n="zdudasova.pageTitle">Zuzana Dudášová – trénerka | Universal Gym Šamorín</title>
+		<meta
+			name="description"
+			content="Universal Gym Šamorín: silový tréning, striking, thajský box pre ženy, Krav Maga, Metcon a tréningy pre deti – každý tréning s certifikovaným trénerom."
+		/>
+		<meta name="theme-color" content="#0b0b0c" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- home.css: colours, top bar, buttons, footer (same as the homepage); trainer.css: trainer pages -->
+		<link rel="stylesheet" href="assets/css/home.css?v=21" />
+		<link rel="stylesheet" href="assets/css/trainer.css?v=37" />
+		<script>
+			document.documentElement.classList.add('js');
+		</script>
+		<script src="assets/locales/sk.js?v=17"></script>
+		<script src="assets/locales/en.js?v=17"></script>
+		<script src="assets/locales/hu.js?v=17"></script>
+		<script src="assets/js/i18n.js"></script>
+		<script src="assets/js/site-header.js" defer></script>
+		<script src="assets/js/home.js?v=11" defer></script>
+		<script src="assets/js/test-mode.js" defer></script>
+	</head>
+		<!--
+			TEXTS: every text with data-i18n="…" comes from assets/locales/sk.js, en.js and hu.js.
+			The page replaces the text written here with the one from those files when it loads,
+			so change texts THERE (in all three languages). The Slovak text below is only a fallback.
+		-->
+		<a class="skip-link" href="#main" data-i18n="a11y.skip"
+			>Preskočiť na obsah</a
+		>
+		<div class="progress" aria-hidden="true"></div>
+
+		<!-- ===================== Navbar ===================== -->
+		<header class="topbar" data-root="" data-menu-breakpoint="1121">
+			<div class="topbar-inner">
+				<a
+					class="logo"
+					href="index.html"
+					aria-label="UniversalGym – úvod"
+					data-i18n-attr="aria-label:a11y.home"
+				>
+					<span class="logo-mark"
+						><svg viewBox="0 0 24 24" aria-hidden="true">
+							<path
+								d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"
+							/></svg
+					></span>
+					<span class="logo-word">Universal<span>Gym</span></span>
+				</a>
+
+				<nav
+					id="topbar-links"
+					class="topbar-links"
+					aria-label="Hlavná navigácia"
+					data-i18n-attr="aria-label:nav.label"
+				>
+					<a href="index.html#about" data-i18n="nav.about">O nás</a>
+					<a href="index.html#programs" data-i18n="nav.programs">Programy</a>
+					<a href="index.html#gym" data-i18n="nav.gym">Posilňovňa</a>
+					<a href="index.html#trainers" class="is-active" aria-current="page" data-i18n="nav.trainers">Tréneri</a>
+					<a href="index.html#memberships" data-i18n="nav.memberships">Členstvo</a>
+					<a href="index.html#visit" data-i18n="nav.contact">Kontakt</a>
+					<!-- Phone menu only: QR code card and a back button (shown in the full-screen menu). -->
+					<div class="menu-extra">
+						<div class="menu-qr">
+							<span class="menu-qr-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1" /><rect x="14" y="3" width="7" height="7" rx="1" /><rect x="3" y="14" width="7" height="7" rx="1" /><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 17h3v4" /></svg></span>
+							<div>
+								<b data-i18n="menu.qrTitle">Tvoj QR kód</b>
+								<small data-i18n="menu.qrText">Tvoja vstupenka je v členskej aplikácii.</small>
+							</div>
+							<a class="btn" href="#test-off" data-test-off>
+								<span data-i18n="menu.qrOpen">Otvoriť môj QR kód</span>
+								<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+							</a>
+							<p class="menu-join">
+								<span data-i18n="menu.noAccount">Ešte nemáš účet?</span>
+								<a href="#test-off" data-test-off data-i18n="nav.joinNow">Zaregistruj sa</a>
+							</p>
+						</div>
+						<button class="menu-back" type="button" data-menu-close>
+							<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" /></svg>
+							<span data-i18n="menu.back">Späť na stránku</span>
+						</button>
+					</div>
+				</nav>
+
+				<!-- Logged out: Join / Member login. Logged in: the account icon (site-account.js). -->
+				<div id="account-slot" class="account-slot">
+					<a href="#test-off" data-test-off data-i18n="nav.join">Registrácia</a>
+					<a href="#test-off" data-test-off class="login-link">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<rect x="3" y="3" width="7" height="7" rx="1" />
+							<rect x="14" y="3" width="7" height="7" rx="1" />
+							<rect x="3" y="14" width="7" height="7" rx="1" />
+							<path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 17h3v4" />
+						</svg>
+						<span data-i18n="nav.login">Prihlásenie</span>
+					</a>
+				</div>
+
+				<button
+					class="menu-toggle"
+					type="button"
+					aria-expanded="false"
+					aria-controls="topbar-links"
+					aria-label="Otvoriť menu"
+					data-label-open="Otvoriť menu"
+					data-label-close="Zavrieť menu"
+					data-i18n-attr="aria-label:nav.openMenu, data-label-open:nav.openMenu, data-label-close:nav.closeMenu"
+				>
+					<span></span><span></span><span></span>
+				</button>
+			</div>
+		</header>
+
+		<!--
+			Trainer page. Texts: keys zdudasova.* (this trainer) and trainerPage.* (the same on every
+			trainer page) in assets/locales/sk.js, en.js and hu.js. A new trainer: copy this file,
+			change the name, photo and contact links, and add their own keys.
+		-->
+		<main id="main" class="tp">
+			<!-- ===================== Intro: name, a short summary, photo ===================== -->
+			<section class="tp-hero" id="top">
+				<p class="tp-hero-word" aria-hidden="true">Dudášová</p>
+				<div class="container tp-hero-inner">
+					<div class="tp-intro">
+						<a class="tp-back" href="index.html#trainers">
+							<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" /></svg>
+							<span data-i18n="trainerPage.back">Všetci tréneri</span>
+						</a>
+						<span class="eyebrow tp-rise" style="--i: 0" data-i18n="zdudasova.role">Silovo-kondičná trénerka</span>
+						<h1 class="tp-name">
+							<span class="tp-rise" style="--i: 1">Zuzana</span>
+							<span class="tp-rise accent" style="--i: 2">Dudášová</span>
+						</h1>
+						<!-- A short summary under the name (zdudasova.summary) -->
+						<p class="tp-summary tp-rise" style="--i: 3" data-i18n="zdudasova.summary">Pomôžem ti zlepšiť silu, kondíciu a mobilitu – individuálne, bezpečne a s dôrazom na zdravý pohyb a zdravú chrbticu.</p>
+					</div>
+
+					<figure class="tp-photo">
+						<img
+							src="assets/img/trainers/zdudasova_2.png"
+							alt="Zuzana Dudášová"
+							width="1086"
+							height="1448"
+						/>
+					</figure>
+				</div>
+			</section>
+
+			<!-- ===================== Contact card: overlaps the bottom of the intro and merges into the section below =====================
+			     Contact links: replace each # with the real link.
+			     WhatsApp: https://wa.me/421XXXXXXXXX (number without +, spaces or the first 0),
+			     Instagram: https://www.instagram.com/…, Facebook: https://www.facebook.com/… -->
+			<section class="tp-card-wrap" aria-labelledby="tp-card-title">
+				<div class="container">
+					<div class="tp-card">
+						<div class="tp-card-text">
+							<h2 id="tp-card-title" data-i18n-html="trainerPage.ctaTitle">Trénuj <em>so mnou</em></h2>
+							<p data-i18n="trainerPage.ctaText">Napíš mi a dohodneme si prvý tréning.</p>
+						</div>
+						<div class="tp-card-actions">
+							<div class="tp-card-social">
+								<a class="tp-social" href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="tp-icon-fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" /></svg></a>
+								<a class="tp-social" href="#" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><path d="M17.5 6.5h.01" /></svg></a>
+								<a class="tp-social" href="#" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg></a>
+							</div>
+							<a class="tp-card-link" href="index.html#trainers">
+								<span data-i18n="trainerPage.otherTrainers">Ďalší tréneri</span>
+								<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ===================== About me (left) and How I can help (right) ===================== -->
+			<section class="section section-alt tp-about" id="o-mne">
+				<div class="container tp-about-grid">
+					<div class="reveal">
+						<h2 class="tp-about-title"><span data-i18n="trainerPage.about">O mne</span></h2>
+						<!-- Paragraphs in zdudasova.about (class="is-plain": all the same size; without it the first one is bigger) -->
+						<div class="tp-about-text is-plain" data-i18n-html="zdudasova.about">
+							<p>Som certifikovaná silovo-kondičná trénerka EPI a vo svojej práci prepájam funkčný pohyb, silový tréning, vzpieranie a rozvoj kondície.</p>
+							<p>Zameriavam sa na zlepšovanie mobility, stability, sily a celkovej pohybovej výkonnosti, pričom využívam aj princípy DNS a SM systému na podporu správnych pohybových návykov a zdravia chrbtice. Ku každému klientovi pristupujem individuálne, s rešpektom k jeho veku, fyzickým možnostiam a osobným cieľom, pretože mojím cieľom je nielen zlepšenie kondície, ale aj dlhodobo udržateľný a zdravý pohyb.</p>
+						</div>
+					</div>
+					<div class="reveal" style="--i: 1">
+						<h2 class="tp-about-title"><span data-i18n="trainerPage.help">V čom ti pomôžem</span></h2>
+						<!-- One <li> per item, any number (keys zdudasova.help1, help2, …) -->
+						<ul class="tp-help-list">
+							<li data-i18n="zdudasova.help1">Osobná trénerka</li>
+							<li data-i18n="zdudasova.help2">Silovo-kondičná trénerka EPI</li>
+							<li data-i18n="zdudasova.help3">Skupinové tréningy</li>
+							<li data-i18n="zdudasova.help4">Vzpieranie</li>
+							<li data-i18n="zdudasova.help5">SM systém a DNS</li>
+							<li data-i18n="zdudasova.help6">Poradenstvo v oblasti výživy</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- ===================== Footer ===================== -->
+		<footer class="site-footer">
+			<div class="container">
+				<div class="footer-grid">
+					<div>
+						<a
+							class="logo"
+							href="index.html"
+							aria-label="UniversalGym – úvod"
+							data-i18n-attr="aria-label:a11y.home"
+						>
+							<span class="logo-mark"
+								><svg viewBox="0 0 24 24" aria-hidden="true">
+									<path
+										d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"
+									/></svg
+							></span>
+							<span class="logo-word">Universal<span>Gym</span></span>
+						</a>
+						<p data-i18n="footer.about">
+							Posilňovňa a bojové športy pod jednou strechou: sila, striking a
+							thajský box pre ženy. Tvoja sila začína tu.
+						</p>
+						<div class="socials">
+							<a href="#" aria-label="Instagram"
+								><svg viewBox="0 0 24 24">
+									<rect x="3" y="3" width="18" height="18" rx="5" />
+									<circle cx="12" cy="12" r="4" />
+									<path d="M17.5 6.5h.01" /></svg
+							></a>
+							<a href="#" aria-label="Facebook"
+								><svg viewBox="0 0 24 24">
+									<path
+										d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+									/></svg
+							></a>
+							<a href="#" aria-label="YouTube"
+								><svg viewBox="0 0 24 24">
+									<path
+										d="M22.5 6.4a2.8 2.8 0 0 0-2-2C18.9 4 12 4 12 4s-6.9 0-8.5.4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 5.6 2.8 2.8 0 0 0 2 2C5.1 20 12 20 12 20s6.9 0 8.5-.4a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-5.6z"
+									/>
+									<path d="M9.8 15.5l5.7-3.5-5.7-3.5z" /></svg
+							></a>
+							<a href="#" aria-label="TikTok"
+								><svg viewBox="0 0 24 24">
+									<path d="M9 12a4 4 0 1 0 4 4V2c.5 2.5 2.5 4.5 5 5" /></svg
+							></a>
+						</div>
+					</div>
+
+					<div>
+						<h4 data-i18n="footer.explore">Preskúmaj</h4>
+						<ul>
+							<li><a href="index.html#about" data-i18n="nav.about">O nás</a></li>
+							<li><a href="index.html#programs" data-i18n="nav.programs">Programy</a></li>
+							<li><a href="index.html#gym" data-i18n="nav.gym">Posilňovňa</a></li>
+							<li><a href="index.html#trainers" data-i18n="nav.trainers">Tréneri</a></li>
+							<li>
+								<a href="index.html#memberships" data-i18n="nav.memberships">Členstvo</a>
+							</li>
+						</ul>
+					</div>
+
+					<div>
+						<h4 data-i18n="footer.members">Pre členov</h4>
+						<ul>
+							<li>
+								<a href="#test-off" data-test-off data-i18n="nav.joinNow">Zaregistruj sa</a>
+							</li>
+							<li>
+								<a href="#test-off" data-test-off data-i18n="nav.login">Prihlásenie</a>
+							</li>
+							<li>
+								<a href="#test-off" data-test-off data-i18n="footer.myQr"
+									>Môj QR kód</a
+								>
+							</li>
+						</ul>
+					</div>
+
+					<div>
+						<h4 data-i18n="footer.loop">Ako k nám?</h4>
+						<ul>
+							<li>Krajná 11/A, 931 01 Šamorín</li>
+							<li>
+								<a href="mailto:info@ugsamorin.sk"
+									>info@ugsamorin.sk</a
+								>
+							</li>
+							<li><a href="tel:+421908308708">+421 908 308 708</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="footer-bottom">
+					<span
+						>© <span data-year>2026</span>
+						<span data-i18n="footer.rights"
+							>UniversalGym. Všetky práva vyhradené.</span
+						></span
+					>
+					<nav
+						aria-label="Právne informácie"
+						data-i18n-attr="aria-label:footer.legal"
+					>
+						<a href="#" data-i18n="footer.privacy">Ochrana súkromia</a>
+						<a href="#" data-i18n="footer.terms">Podmienky</a>
+						<a href="#" data-i18n="footer.rules">Prevádzkový poriadok</a>
+					</nav>
+				</div>
+			</div>
+
+			<p class="footer-word" aria-hidden="true">
+				<span>Universal</span><span class="y">Gym</span>
+			</p>
+		</footer>
+
+		<button
+			class="to-top"
+			type="button"
+			aria-label="Späť hore"
+			data-i18n-attr="aria-label:a11y.toTop"
+		>
+			<svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6" /></svg>
+		</button>
+
+		<!-- Language button (bottom-left) and picker. The picker also opens by itself on the
+		     first visit; the choice is remembered. Handled by assets/js/i18n.js. -->
+		<button
+			class="lang-fab"
+			type="button"
+			data-open-lang
+			aria-label="Jazyk"
+			data-i18n-attr="aria-label:nav.language"
+		>
+			<svg viewBox="0 0 24 24" aria-hidden="true">
+				<circle cx="12" cy="12" r="9" />
+				<path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+			</svg>
+			<span data-lang-current>SK</span>
+		</button>
+
+		<div
+			class="lang-modal"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="lang-modal-title"
+			hidden
+		>
+			<div class="lang-card">
+				<span class="logo-mark"
+					><svg viewBox="0 0 24 24" aria-hidden="true">
+						<path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11" /></svg
+				></span>
+				<!-- Shown in all three languages on purpose: the visitor has not picked one yet. -->
+				<h2 id="lang-modal-title">
+					Vyber si jazyk<span>Choose your language · Válassz nyelvet</span>
+				</h2>
+				<div class="lang-options">
+					<button type="button" data-lang="sk" lang="sk" aria-pressed="true">
+						<b>Slovenčina</b><span>SK</span>
+					</button>
+					<button type="button" data-lang="en" lang="en" aria-pressed="false">
+						<b>English</b><span>EN</span>
+					</button>
+					<button type="button" data-lang="hu" lang="hu" aria-pressed="false">
+						<b>Magyar</b><span>HU</span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>

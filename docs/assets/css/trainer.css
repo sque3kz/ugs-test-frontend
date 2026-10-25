@@ -1,0 +1,277 @@
+/* =====================================================================
+   Trainer pages (zdudasova.html, …). Loaded after home.css, which brings
+   the colours, top bar, buttons, section headings and footer.
+   ===================================================================== */
+
+/* ===== Intro: name and contact on the left, the trainer cut out on the right ===== */
+
+.tp-hero {
+  --card-overlap: clamp(48px, 6vw, 84px); /* how far the contact card reaches up into the intro */
+  position: relative;
+  overflow: hidden;
+  padding-top: calc(var(--topbar-h) + clamp(24px, 4vw, 48px));
+  padding-bottom: var(--card-overlap); /* the photo ends where the contact card begins */
+  background:
+    radial-gradient(45% 55% at 72% 45%, var(--primary-tint), transparent 70%),
+    linear-gradient(180deg, var(--bg-alt), var(--bg));
+}
+
+/* The surname, huge and outlined, behind everything */
+.tp-hero-word {
+  position: absolute;
+  left: 50%;
+  bottom: -0.12em;
+  margin: 0;
+  transform: translateX(-50%);
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--text) 9%, transparent);
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 21vw, 19rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+.tp-hero-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: end;
+  gap: clamp(24px, 4vw, 64px);
+}
+
+/* The texts sit in the middle of the photo's height; the photo stands on the bottom edge */
+.tp-intro { align-self: center; padding-bottom: clamp(24px, 4vw, 48px); }
+
+.tp-back {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: clamp(28px, 4vw, 44px);
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+.tp-back svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 250ms var(--ease); }
+.tp-back:hover { color: var(--primary); }
+.tp-back:hover svg { transform: translateX(-4px); }
+
+.tp-name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(3.6rem, 9vw, 7.6rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+.tp-name span { display: block; }
+.tp-name .accent { color: var(--primary); }
+
+/* Short summary under the name */
+.tp-summary { max-width: 44ch; margin: clamp(28px, 3.5vw, 44px) 0 0; color: color-mix(in srgb, var(--text) 82%, transparent); font-size: clamp(1.05rem, 1.4vw, 1.22rem); line-height: 1.6; }
+
+/* Round icon buttons: WhatsApp, Instagram, Facebook (in the contact card) */
+.tp-social {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: rgba(255 255 255 / 0.04);
+  color: var(--text);
+  transition: background 200ms ease, color 200ms ease, border-color 200ms ease, transform 250ms var(--ease);
+}
+.tp-social:hover { border-color: var(--primary); background: var(--primary); color: var(--on-primary); transform: translateY(-3px); }
+.tp-social svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+/* WhatsApp: the logo is a filled shape, not an outline */
+.tp-social svg.tp-icon-fill { width: 21px; height: 21px; fill: currentColor; stroke: none; }
+
+/* The photo stands on the bottom edge of the intro, a yellow glow behind */
+.tp-photo { position: relative; align-self: end; margin: 0; }
+.tp-photo::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 14%;
+  z-index: -1;
+  width: 82%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--primary-glow), transparent 66%);
+  transform: translateX(-50%);
+}
+.tp-photo img {
+  display: block;
+  width: 100%;
+  height: auto; /* the width/height in the HTML only reserve the space */
+  max-height: min(78svh, 780px);
+  margin: 0 auto;
+  object-fit: contain;
+  object-position: bottom;
+  filter: drop-shadow(0 5px 8px rgba(0 0 0 / 0.6)); /* tight, follows the outline of the body */
+}
+/* The bottom of the photo fades into the next section */
+.tp-photo::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 18%;
+  background: linear-gradient(0deg, var(--bg), transparent);
+  pointer-events: none;
+}
+
+/* Intro texts slide up one after another, the photo fades in */
+.js .tp-rise { opacity: 0; transform: translateY(24px); animation: tp-rise 900ms var(--ease-out) forwards; animation-delay: calc(120ms + var(--i, 0) * 110ms); }
+.js .tp-photo img { opacity: 0; transform: translateY(30px) scale(0.98); animation: tp-rise 1200ms var(--ease-out) 200ms forwards; }
+@keyframes tp-rise { to { opacity: 1; transform: none; } }
+
+/* ===== Contact card: set in from the sides, overlapping the intro and the section below ===== */
+
+.tp-card-wrap {
+  --overlap: clamp(48px, 6vw, 84px); /* = --card-overlap of .tp-hero */
+  position: relative;
+  z-index: 2;
+  margin-top: calc(-1 * var(--overlap));
+  /* Below the intro: the colour of the About section that follows, behind the yellow card */
+  background: linear-gradient(180deg, transparent var(--overlap), var(--bg-alt) var(--overlap));
+}
+
+/* Yellow, rounded, the same look as the old "Train with me" band */
+.tp-card {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px 40px;
+  padding: clamp(32px, 5vw, 56px) clamp(28px, 5vw, 64px);
+  border-radius: var(--radius-lg);
+  background: var(--gradient);
+  color: var(--on-primary);
+  box-shadow: 0 30px 70px rgba(0 0 0 / 0.45);
+  overflow: hidden;
+}
+.tp-card::before { /* faint ring in the corner */
+  content: '';
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  width: 220px;
+  height: 220px;
+  border: 26px solid rgba(0 0 0 / 0.06);
+  border-radius: 50%;
+}
+
+.tp-card-text h2 { margin: 0 0 8px; font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 400; line-height: 1.05; text-transform: uppercase; }
+.tp-card-text h2 em { font-style: normal; color: transparent; -webkit-text-stroke: 1.5px var(--on-primary); }
+.tp-card-text p { margin: 0; font-size: 1.05rem; font-weight: 500; opacity: 0.8; }
+
+.tp-card-actions { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; }
+.tp-card-social { display: flex; gap: 10px; }
+/* The round icons, dark on the yellow */
+.tp-card-social .tp-social { border-color: rgba(0 0 0 / 0.18); background: rgba(0 0 0 / 0.06); color: var(--on-primary); }
+.tp-card-social .tp-social:hover { border-color: var(--on-primary); background: var(--on-primary); color: var(--primary); }
+.tp-card-link { display: inline-flex; align-items: center; gap: 8px; color: var(--on-primary); font-weight: 700; text-decoration: none; }
+.tp-card-link svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: transform 250ms var(--ease); }
+.tp-card-link:hover svg { transform: translateX(4px); }
+
+/* ===== About me (left) and How I can help (right) ===== */
+
+.tp-about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(40px, 6vw, 96px);
+}
+
+.tp-about-title {
+  margin: 0 0 clamp(28px, 4vw, 48px);
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4.2vw, 3.6rem);
+  font-weight: 400;
+  line-height: 1.12; /* room for the accents (Č, Ô) if a heading wraps */
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+/* Textured letters: grain over diagonal stripes in two yellows (like the knurling on a bar),
+   clipped to the text, with a thin outline offset behind it */
+.tp-about-title span {
+  display: inline-block;
+  padding: 0.04em 0.06em 0 0; /* keeps the accents and the last letter's edge inside the texture */
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(-45deg, var(--primary-soft) 0 6px, var(--primary) 6px 12px);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0.05em 0.05em 0 color-mix(in srgb, var(--text) 14%, transparent));
+}
+.tp-about-title::after { /* short yellow bar */
+  content: '';
+  display: block;
+  width: 72px;
+  height: 5px;
+  margin-top: 18px;
+  border-radius: 3px;
+  background: var(--gradient);
+}
+
+.tp-about-text p { margin: 0 0 1em; color: color-mix(in srgb, var(--text) 76%, transparent); font-size: clamp(1rem, 1.2vw, 1.08rem); line-height: 1.75; }
+.tp-about-text p:first-child { color: var(--text); font-size: clamp(1.2rem, 1.8vw, 1.5rem); font-weight: 500; line-height: 1.45; }
+.tp-about-text p:last-child { margin-bottom: 0; }
+/* class="is-plain": the first paragraph like the others (for a long first paragraph) */
+.tp-about-text.is-plain p:first-child { color: color-mix(in srgb, var(--text) 76%, transparent); font-size: clamp(1rem, 1.2vw, 1.08rem); font-weight: 400; line-height: 1.75; }
+
+/* How I can help: a simple list, one item per line with a yellow tick (any number of items) */
+/* Optional small headings that split the list into groups */
+.tp-help-group { margin: 0 0 2px; color: var(--primary); font-size: 0.76rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; }
+.tp-help-list + .tp-help-group { margin-top: 28px; }
+.tp-help-list { margin: 0; padding: 0; list-style: none; }
+.tp-help-list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+.tp-help-list li:last-child { border-bottom: 0; }
+/* Longer items (class="is-detailed"): normal weight, the tick at the first line, the part in <b> stands out */
+.tp-help-list.is-detailed li { position: relative; display: block; padding: 14px 0 14px 32px; color: color-mix(in srgb, var(--text) 78%, transparent); font-size: 0.97rem; font-weight: 400; line-height: 1.55; }
+.tp-help-list.is-detailed li::before { position: absolute; left: 0; top: 17px; } /* plain text flow, so the bold part and the rest stay one sentence */
+.tp-help-list.is-detailed b { color: var(--text); font-weight: 600; }
+.tp-help-list li::before { /* yellow tick */
+  content: '';
+  flex: none;
+  width: 18px;
+  height: 18px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffc400' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12.5l5 5L20 6.5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* ===== Responsive ===== */
+
+@media (max-width: 900px) {
+  .tp-hero-inner { grid-template-columns: 1fr; }
+  .tp-intro { padding-bottom: 16px; }
+  .tp-photo { max-width: 460px; width: 100%; margin: 0 auto; }
+  .tp-photo img { max-height: 70svh; }
+  .tp-about-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .tp-name { font-size: clamp(3.2rem, 17vw, 4.6rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .tp-rise, .js .tp-photo img { opacity: 1; transform: none; animation: none; }
+}
