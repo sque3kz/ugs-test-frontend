@@ -598,6 +598,7 @@ button { font: inherit; cursor: pointer; }
 }
 @keyframes grid-drift { to { background-position: 64px 64px; } }
 
+/* The right column stays empty, so the photo shows there */
 .hero-inner { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); align-items: center; gap: 48px; }
 
 
@@ -643,46 +644,7 @@ button { font: inherit; cursor: pointer; }
 .hero-stats strong span { color: var(--primary); }
 .hero-stats small { color: var(--muted); font-size: 0.85rem; }
 
-/* Floating glass cards on the right of the hero */
-.hero-cards { position: relative; height: 440px; }
-
-.float-card {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 16px 20px;
-  border: 1px solid rgba(255 255 255 / 0.12);
-  border-radius: var(--radius);
-  background: color-mix(in srgb, var(--surface) 65%, transparent);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  backdrop-filter: blur(18px) saturate(140%);
-  box-shadow: 0 24px 60px rgba(0 0 0 / 0.45);
-  animation: float 6s ease-in-out infinite;
-}
-.float-card small { display: block; color: var(--muted); font-size: 0.78rem; }
-.float-card b { font-size: 1rem; }
-
-.float-card .icon {
-  display: grid;
-  place-items: center;
-  flex: none;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: var(--gradient);
-  color: var(--on-primary);
-}
-.float-card .icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-
-.float-card.qr-card { top: 20px; right: 0; flex-direction: column; align-items: stretch; width: 210px; padding: 18px; animation-delay: -1s; }
-.float-card.qr-card .mini-qr { position: relative; aspect-ratio: 1; padding: 12px; border-radius: 12px; background: #fff; overflow: hidden; }
-.float-card.qr-card .mini-qr svg { width: 100%; height: 100%; }
-.float-card.qr-card .mini-qr::after { content: ''; position: absolute; left: 0; right: 0; height: 3px; background: var(--primary); box-shadow: 0 0 16px 4px var(--primary-glow); animation: scan 2.6s ease-in-out infinite; }
-.float-card.card-a { top: 250px; left: 0; animation-delay: -3s; }
-.float-card.card-b { bottom: 0; right: 30px; animation-delay: -4.5s; }
 @keyframes float { 50% { transform: translateY(-14px); } }
-@keyframes scan { 0%, 100% { top: 6%; } 50% { top: 92%; } }
 
 
 /* ===== Marquee band ===== */
@@ -1686,7 +1648,6 @@ button { font: inherit; cursor: pointer; }
 
 @media (max-width: 1080px) {
   .hero-inner { grid-template-columns: 1fr; }
-  .hero-cards { display: none; }
   .trainers { --show: 2; }
   .trainers::before, .trainers::after { content: none; } /* no middle with 2 in view */
   .trainer-wrap { scroll-snap-align: start; }
