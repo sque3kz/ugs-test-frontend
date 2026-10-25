@@ -188,8 +188,11 @@
 
     // Resting on a copy: jump to the same spot among the real cards. .is-jumping (home.css) switches
     // the card animations off for that moment, so the real card doesn't fade in from dimmed.
+    // Never while a finger is on the row: phones (Safari above all) fight a scroll jump during a
+    // swipe, and the row visibly jumps.
+    let touching = false;
     const settle = () => {
-      if (!loop) return;
+      if (!loop || touching) return;
       const resting = track.querySelector('.is-center') ?? cards.find((card) => Math.abs(offsetOf(card)) < 2);
       if (!resting || !('copy' in resting.dataset)) return;
       const twin = real[Number(resting.dataset.index)];
@@ -200,16 +203,34 @@
       requestAnimationFrame(() => track.classList.remove('is-jumping'));
     };
 
+    // Settle once scrolling, the glide after a swipe and the snapping have all finished: on
+    // scrollend where the browser has it, else after a quiet moment with no finger on the row.
+    const hasScrollEnd = 'onscrollend' in window;
     let frame = 0;
     let settleTimer = 0;
+    const waitToSettle = () => {
+      clearTimeout(settleTimer);
+      settleTimer = setTimeout(settle, 300);
+    };
     const onTrackScroll = () => {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(update);
-      clearTimeout(settleTimer);
-      settleTimer = setTimeout(settle, 160); // scrolling (and snapping) has stopped
+      if (hasScrollEnd) clearTimeout(settleTimer); // still moving: scrollend will come
+      else waitToSettle();
     };
     track.addEventListener('scroll', onTrackScroll, { passive: true });
-    window.addEventListener('resize', onTrackScroll);
+    if (hasScrollEnd) track.addEventListener('scrollend', settle);
+    track.addEventListener('touchstart', () => { touching = true; clearTimeout(settleTimer); }, { passive: true });
+    const onTouchEnd = () => {
+      touching = false;
+      waitToSettle(); // a tap without scrolling fires no scrollend
+    };
+    track.addEventListener('touchend', onTouchEnd, { passive: true });
+    track.addEventListener('touchcancel', onTouchEnd, { passive: true });
+    window.addEventListener('resize', () => {
+      onTrackScroll();
+      waitToSettle();
+    });
 
     // Start among the real cards: the head coach (data-start) in the middle with 3 in view, else the first
     update();

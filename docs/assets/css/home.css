@@ -8,6 +8,8 @@
    ===================================================================== */
 
 :root {
+  color-scheme: dark; /* the site is dark already: browsers in dark mode leave the colours alone */
+
   /* Brand */
   --primary: #ffc400;          /* main accent (yellow) */
   --primary-strong: #ffa800;   /* second stop for gradients */
