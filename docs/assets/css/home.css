@@ -988,10 +988,10 @@ button { font: inherit; cursor: pointer; }
 /* For the instant jump from a copy to the real card: no animations, so nothing visibly changes */
 .trainers.is-jumping, .trainers.is-jumping * { transition: none !important; scroll-behavior: auto !important; }
 
-/* With 3 cards in view (or 1 on phones) the trainers have a focus: home.js adds .has-focus to the
+/* With 3 cards in view the trainers have a focus: home.js adds .has-focus to the
    scroller and .is-center to the card in the middle. Every other card is smaller (name too) and
    darker, centred on the middle card's photo; it comes to full size once it reaches the middle.
-   With 2 in view there is no middle, so all cards stay normal.
+   With 2 in view, or 1 on phones, nothing is highlighted, so all cards stay normal.
    The photo and the name move, not .trainer-wrap: scroll snapping lines up with the wrap, so it must stay put.
    Both shrink around the centre of the photo, so they stay together: the name's origin is that same point,
    18px (its margin) plus half the photo's height (3:4, so 2/3 of the card width) above it. */
@@ -1866,8 +1866,6 @@ button { font: inherit; cursor: pointer; }
   .shot.wide { grid-column: span 2; }
   .caption small { display: none; }
   .trainers { --show: 1; --gap: 14px; }
-  /* One trainer in view: they keep their size, so the incoming one doesn't grow mid-swipe and look like it jumps */
-  .has-focus .trainer-wrap:not(.is-center) > * { scale: none; }
   .trainer-wrap { scroll-snap-align: center; }
   .programs { grid-template-columns: 1fr; }
   .program { min-height: 400px; }

@@ -161,11 +161,10 @@
       return dot;
     });
 
-    // With three in view (or one on phones), the card nearest the middle is in focus and the
-    // others are dimmed (home.css). With two in view there is no middle, so nothing is dimmed.
+    // With three in view, the card nearest the middle is in focus and the others are dimmed
+    // (home.css). With two in view, or one on phones, nothing is highlighted: the cards just slide.
     const updateFocus = () => {
-      const inRow = getComputedStyle(track).getPropertyValue('--show').trim();
-      const focus = inRow === '3' || inRow === '1';
+      const focus = getComputedStyle(track).getPropertyValue('--show').trim() === '3';
       const box = track.getBoundingClientRect();
       const middle = box.left + box.width / 2;
       const distance = (card) => { const r = card.getBoundingClientRect(); return Math.abs(r.left + r.width / 2 - middle); };
