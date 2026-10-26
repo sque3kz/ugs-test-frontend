@@ -1867,8 +1867,26 @@ button { font: inherit; cursor: pointer; }
   .caption small { display: none; }
   .trainers { --show: 1; --gap: 14px; }
   .trainer-wrap { scroll-snap-align: center; }
-  .programs { grid-template-columns: 1fr; }
-  .program { min-height: 400px; }
+  /* Programs: a sideways swipe row, one card with the next one peeking in, edge to edge.
+     The padding keeps the cards' shadow from being cut off by the scroll box. */
+  .programs {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 85%;
+    gap: 14px;
+    margin: -16px calc(-1 * var(--gutter)) -32px;
+    padding: 16px var(--gutter) 32px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 var(--gutter);
+    scrollbar-width: none;
+  }
+  .programs::-webkit-scrollbar { display: none; }
+  .program { min-height: 400px; scroll-snap-align: start; }
+  .program:hover, .program:focus-within { transform: none; } /* no lift: it would jump while swiping */
+  /* Cards out to the side would only fade in once swiped in: show them all with the row */
+  .js .programs .program.reveal { opacity: 1; transform: none; }
   .trainer .trainer-more { grid-template-rows: 1fr; } /* no hover on touch: show bios */
   .phone-chip { display: none; }
   .footer-grid { grid-template-columns: 1fr; }

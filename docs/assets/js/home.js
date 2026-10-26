@@ -67,6 +67,17 @@
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal, .about-media').forEach((el) => revealObserver.observe(el));
 
+  // Programs on phones are a sideways swipe row: lazy photos out to the side would only load
+  // mid-swipe, so load them all once the section gets close.
+  const programs = document.querySelector('.programs');
+  if (programs) {
+    new IntersectionObserver((entries, observer) => {
+      if (!entries[0].isIntersecting) return;
+      programs.querySelectorAll('img[loading="lazy"]').forEach((img) => { img.loading = 'eager'; });
+      observer.disconnect();
+    }, { rootMargin: '600px 0px' }).observe(programs);
+  }
+
   /* ----- Animated counters ----- */
 
   // Numbers follow the page language (1,200 in English, 1 200 in Slovak).
