@@ -24,9 +24,9 @@
 		<script>
 			document.documentElement.classList.add('js');
 		</script>
-		<script src="assets/locales/sk.js?v=17"></script>
-		<script src="assets/locales/en.js?v=17"></script>
-		<script src="assets/locales/hu.js?v=17"></script>
+		<script src="assets/locales/sk.js?v=18"></script>
+		<script src="assets/locales/en.js?v=18"></script>
+		<script src="assets/locales/hu.js?v=18"></script>
 		<script src="assets/js/i18n.js"></script>
 		<script src="assets/js/site-header.js" defer></script>
 		<script src="assets/js/home.js?v=12" defer></script>
@@ -199,14 +199,19 @@
 					</div>
 					<div class="reveal" style="--i: 1">
 						<h2 class="tp-about-title"><span data-i18n="trainerPage.help">V čom ti pomôžem</span></h2>
-						<!-- One <li> per item, any number (keys zdudasova.help1, help2, …) -->
+						<!-- Groups: a small heading (<p class="tp-help-group">) and a list under it; any number of groups and items.
+						     class="is-detailed" on a list: longer items in normal weight, the part in <b> stands out. -->
+						<p class="tp-help-group" data-i18n="zdudasova.groupFocus">Zameranie</p>
 						<ul class="tp-help-list">
-							<li data-i18n="zdudasova.help1">Osobná trénerka</li>
-							<li data-i18n="zdudasova.help2">Silovo-kondičná trénerka EPI</li>
 							<li data-i18n="zdudasova.help3">Skupinové tréningy</li>
 							<li data-i18n="zdudasova.help4">Vzpieranie</li>
 							<li data-i18n="zdudasova.help5">SM systém a DNS</li>
 							<li data-i18n="zdudasova.help6">Poradenstvo v oblasti výživy</li>
+						</ul>
+						<p class="tp-help-group" data-i18n="zdudasova.groupQualifications">Kvalifikácia</p>
+						<ul class="tp-help-list">
+							<li data-i18n="zdudasova.help1">Osobná trénerka</li>
+							<li data-i18n="zdudasova.help2">Silovo-kondičná trénerka EPI</li>
 						</ul>
 					</div>
 				</div>
