@@ -754,6 +754,8 @@ button { font: inherit; cursor: pointer; }
    ===================================================================== */
 
 .programs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+/* A last card alone in its row spans the whole row instead of leaving a gap */
+.programs > .program:last-child:nth-child(3n + 1) { grid-column: 1 / -1; }
 
 .program {
   position: relative;
@@ -841,13 +843,6 @@ button { font: inherit; cursor: pointer; }
 .program:hover .program-time, .program:focus-within .program-time { border-color: transparent; background: var(--primary); color: var(--on-primary); }
 .program:hover .program-time svg, .program:focus-within .program-time svg { stroke: var(--on-primary); }
 .program-body > p:not(.program-time) { margin: 0; color: color-mix(in srgb, var(--text) 80%, transparent); font-size: 0.95rem; }
-
-.program-more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 500ms var(--ease); }
-.program-more > div { overflow: hidden; }
-.program:hover .program-more, .program:focus-within .program-more { grid-template-rows: 1fr; }
-.program-more ul { display: grid; gap: 8px; margin: 18px 0 0; padding: 16px 0 0; border-top: 1px solid rgba(255 255 255 / 0.15); list-style: none; font-size: 0.9rem; }
-.program-more li { display: flex; gap: 10px; }
-.program-more svg { flex: none; width: 18px; height: 18px; margin-top: 2px; padding: 3px; border-radius: 50%; background: var(--primary); fill: none; stroke: var(--on-primary); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
 
 /* =====================================================================
    Gym gallery (bento grid + lightbox)
@@ -1673,8 +1668,9 @@ button { font: inherit; cursor: pointer; }
   .trainers::before, .trainers::after { content: none; } /* no middle with 2 in view */
   .trainer-wrap { scroll-snap-align: start; }
   .programs { grid-template-columns: repeat(2, 1fr); }
+  .programs > .program:last-child:nth-child(3n + 1) { grid-column: auto; }
+  .programs > .program:last-child:nth-child(2n + 1) { grid-column: 1 / -1; }
   .program { min-height: 420px; }
-  .program .program-more { grid-template-rows: 1fr; } /* show details without hover */
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
