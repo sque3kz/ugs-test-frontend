@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="sk">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="robots" content="noindex, nofollow" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title data-i18n="galeria.pageTitle">Galéria | Universal Gym Šamorín</title>
+		<meta
+			name="description"
+			content="Universal Gym Šamorín: silový tréning, striking, thajský box pre ženy, Krav Maga, Metcon a tréningy pre deti – každý tréning s certifikovaným trénerom."
+		/>
+		<meta name="theme-color" content="#0b0b0c" />
+		<!-- The site is dark already: stops phones in dark mode (Samsung Internet, Chrome) from recolouring it -->
+		<meta name="color-scheme" content="dark" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="assets/css/home.css?v=28" />
+		<script>
+			document.documentElement.classList.add('js');
+		</script>
+		<script src="assets/locales/sk.js?v=19"></script>
+		<script src="assets/locales/en.js?v=19"></script>
+		<script src="assets/locales/hu.js?v=19"></script>
+		<script src="assets/js/i18n.js"></script>
+		<script src="assets/js/site-header.js" defer></script>
+		<script src="assets/js/home.js?v=12" defer></script>
+		<script src="assets/js/test-mode.js" defer></script>
+	</head>
+	<body>
+		<!--
+			TEXTS: every text with data-i18n="…" comes from assets/locales/sk.js, en.js and hu.js.
+			The page replaces the text written here with the one from those files when it loads,
+			so change texts THERE (in all three languages). The Slovak text below is only a fallback.
+		-->
+		<a class="skip-link" href="#main" data-i18n="a11y.skip"
+			>Preskočiť na obsah</a
+		>
+		<div class="progress" aria-hidden="true"></div>
+
+		<!-- ===================== Navbar ===================== -->
+		<header class="topbar" data-root="" data-menu-breakpoint="1121">
+			<div class="topbar-inner">
+				<a
+					class="logo"
+					href="index.html"
+					aria-label="UniversalGym – úvod"
+					data-i18n-attr="aria-label:a11y.home"
+				>
+					<span class="logo-mark"
+						><svg viewBox="0 0 24 24" aria-hidden="true">
+							<path
+								d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"
+							/></svg
+					></span>
+					<span class="logo-word">Universal<span>Gym</span></span>
+				</a>
+
+				<nav
+					id="topbar-links"
+					class="topbar-links"
+					aria-label="Hlavná navigácia"
+					data-i18n-attr="aria-label:nav.label"
+				>
+					<a href="index.html#about" data-i18n="nav.about">O nás</a>
+					<a href="index.html#programs" data-i18n="nav.programs">Programy</a>
+					<a href="index.html#gym" class="is-active" aria-current="page" data-i18n="nav.gym">Posilňovňa</a>
+					<a href="index.html#trainers" data-i18n="nav.trainers">Tréneri</a>
+					<a href="index.html#memberships" data-i18n="nav.memberships">Členstvo</a>
+					<a href="index.html#visit" data-i18n="nav.contact">Kontakt</a>
+					<!-- Phone menu only: QR code card and a back button (shown in the full-screen menu). -->
+					<div class="menu-extra">
+						<div class="menu-qr">
+							<span class="menu-qr-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1" /><rect x="14" y="3" width="7" height="7" rx="1" /><rect x="3" y="14" width="7" height="7" rx="1" /><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 17h3v4" /></svg></span>
+							<div>
+								<b data-i18n="menu.qrTitle">Tvoj QR kód</b>
+								<small data-i18n="menu.qrText">Tvoja vstupenka je v členskej aplikácii.</small>
+							</div>
+							<a class="btn" href="#test-off" data-test-off>
+								<span data-i18n="menu.qrOpen">Otvoriť môj QR kód</span>
+								<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+							</a>
+							<p class="menu-join">
+								<span data-i18n="menu.noAccount">Ešte nemáš účet?</span>
+								<a href="#test-off" data-test-off data-i18n="nav.joinNow">Zaregistruj sa</a>
+							</p>
+						</div>
+						<button class="menu-back" type="button" data-menu-close>
+							<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" /></svg>
+							<span data-i18n="menu.back">Späť na stránku</span>
+						</button>
+					</div>
+				</nav>
+
+				<!-- Logged out: Join / Member login. Logged in: the account icon (site-account.js). -->
+				<div id="account-slot" class="account-slot">
+					<a href="#test-off" data-test-off data-i18n="nav.join">Registrácia</a>
+					<a href="#test-off" data-test-off class="login-link">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<rect x="3" y="3" width="7" height="7" rx="1" />
+							<rect x="14" y="3" width="7" height="7" rx="1" />
+							<rect x="3" y="14" width="7" height="7" rx="1" />
+							<path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 17h3v4" />
+						</svg>
+						<span data-i18n="nav.login">Prihlásenie</span>
+					</a>
+				</div>
+
+				<button
+					class="menu-toggle"
+					type="button"
+					aria-expanded="false"
+					aria-controls="topbar-links"
+					aria-label="Otvoriť menu"
+					data-label-open="Otvoriť menu"
+					data-label-close="Zavrieť menu"
+					data-i18n-attr="aria-label:nav.openMenu, data-label-open:nav.openMenu, data-label-close:nav.closeMenu"
+				>
+					<span></span><span></span><span></span>
+				</button>
+			</div>
+		</header>
+
+		<!-- Full gym gallery (the homepage shows only the first few). Texts: gym.*, galeria.*, g1–g17.* -->
+		<main id="main">
+			<section class="section gallery-page" id="gym">
+				<div class="container">
+					<a class="gallery-back" href="index.html#gym"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" /></svg><span data-i18n="galeria.back">Späť na úvod</span></a>
+					<div class="section-head reveal">
+						<span class="eyebrow" data-i18n="gym.eyebrow">V posilňovni</span>
+						<h1 class="title" data-i18n-html="galeria.title">Celá <em>galéria</em>.</h1>
+						<p class="lead" data-i18n="gym.lead">Pozri sa dnu. Ťukni na fotku a zobrazí sa naplno.</p>
+					</div>
+
+					<div class="gallery" data-gallery>
+						<button class="shot reveal zoom" type="button" style="--i: 0; --area: 1 / 1 / span 5 / span 4; --area-m: 1 / 1 / span 3 / span 4">
+							<img
+								src="assets/img/gym/IMG_6825.webp"
+								alt="Veľká zápasnícka žinenka s boxovacími vrecami"
+								data-i18n-attr="alt:g1.alt"
+								loading="lazy"
+								decoding="async"
+							/>
+							<span class="caption"
+								><span
+									><b data-i18n="g1.title">Zápasnícka žinenka</b
+									><small data-i18n="g1.text"
+										>Žinenky a boxovacie vrecia</small
+									></span
+								><span class="zoom"
+									><svg viewBox="0 0 24 24">
+										<path d="M7 17L17 7M8 7h9v9" /></svg></span
+							></span>
+						</button>
+						<button class="shot reveal zoom" type="button" style="--i: 1; --area: 1 / 5 / span 3 / span 5; --area-m: 4 / 1 / span 2 / span 2">
+							<img
+								src="assets/img/gym/IMG_6820.webp"
+								alt="Hlavná tréningová plocha s gumenou podlahou"
+								data-i18n-attr="alt:g2.alt"
+								loading="lazy"
+								decoding="async"
+							/>
+							<span class="caption"
+								><span
+									><b data-i18n="g2.title">Hlavná plocha</b
+									><small data-i18n="g2.text"
+										>Voľné váhy, stroje a kardio pod jednou strechou</small
+									></span
+								><span class="zoom"
+									><svg viewBox="0 0 24 24">
+										<path d="M7 17L17 7M8 7h9v9" /></svg></span
+							></span>
+						</button>
+						<button class="shot reveal zoom" type="button" style="--i: 2; --area: 1 / 10 / span 3 / span 3; --area-m: 4 / 3 / span 2 / span 2">
+							<img
+								src="assets/img/gym/IMG_6815.webp"
+								alt="Viacstanicový kladkový stroj s lavičkou"
+								data-i18n-attr="alt:g3.alt"
+								loading="lazy"
+								decoding="async"
+							/>
+							<span class="caption"
+								><span
+									><b data-i18n="g3.title">Kladkové stroje</b
+									><small data-i18n="g3.text"
+										>Viac staníc pre celé telo</small
+									></span
+								><span class="zoom"
+									><svg viewBox="0 0 24 24">
+										<path d="M7 17L17 7M8 7h9v9" /></svg></span
+							></span>
+						</button>
+						<button class="shot reveal zoom" type="button" style="--i: 3; --area: 4 / 5 / span 2 / span 4; --area-m: 6 / 1 / span 3 / span 2">
+							<img
+								src="assets/img/gym/IMG_6816.webp"
+								alt="Stojan s medicinbalmi, gumami, jednoručkami a kettlebellami"
+								data-i18n-attr="alt:g4.alt"
+								loading="lazy"
+								decoding="async"
+							/>
+							<span class="caption"
+								><span
+									><b data-i18n="g4.title">Doplnky</b
+									><small data-i18n="g4.text"
+										>Medicinbaly, gumy a kettlebelly</small
+									></span
+								><span class="zoom"
+									><svg viewBox="0 0 24 24">
+										<path d="M7 17L17 7M8 7h9v9" /></svg></span
+							></span>
+						</button>
+						<button class="shot reveal zoom" type="button" style="--i: 4; --area: 4 / 9 / span 2 / span 4; --area-m: 6 / 3 / span 2 / span 2">
+							<img
+								src="assets/img/gym/IMG_6822.webp"
+								alt="Silová klietka s polohovateľnými lavičkami a gymnastickými kruhmi"
+								data-i18n-attr="alt:g5.alt"
+								loading="lazy"
+								decoding="async"
+							/>
+							<span class="caption"
+								><span
+									><b data-i18n="g5.title">Funkčný tréning</b
+									><small data-i18n="g5.text"
+										>Kruhy, popruhy a polohovateľné lavičky</small
+									></span
+								><span class="zoom"
+									><svg viewBox="0 0 24 24">
+										<path d="M7 17L17 7M8 7h9v9" /></svg></span
+							></span>
+						</button>
+						<button class="shot reveal zoom" type="button" style="--i: 5; --area: 6 / 9 / span 5 / span 4; --area-m: 8 / 3 / span 3 / span 2">
+							<img
+								src="assets/img/gym/IMG_6817.webp"
+								alt="Rad vzduchových bicyklov a lyžiarsky trenažér"
+								data-i18n-attr="alt:g6.alt"
+								loading="lazy"
+								decoding="async"
+							/>
+							<span class="caption"
+								><span
+									><b data-i18n="g6.title">Kondičná zóna</b
+									><small data-i18n="g6.text"
+										>Air bicykle a lyžiarsky trenažér</small
+									></span
+								><span class="zoom"
+									><svg viewBox="0 0 24 24">
+										<path d="M7 17L17 7M8 7h9v9" /></svg></span
+							></span>
+						</button>
+						<button class="shot reveal zoom" type="button" style="--i: 6; --area: 6 / 1 / span 3 / span 3; --area-m: 9 / 1 / span 2 / span 2">
+							<img
+								src="assets/img/gym/IMG_6828.webp"
+								alt="Kožené boxovacie vrece pred stenou s logom Universal Gym"
+								data-i18n-attr="alt:g7.alt"
+								loading="lazy"
+								decoding="async"
+							/>
+							<span class="caption"
+								><span
+									><b data-i18n="g7.title">Boxovacie vrecia</b
+									><small data-i18n="g7.text"
+										>Na údery aj kopy</small
+									></span
+								><span class="zoom"
+									><svg viewBox="0 0 24 24">
+										<path d="M7 17L17 7M8 7h9v9" /></svg></span
+							></span>
+						</button>
+						<button class="shot reveal zoom" type="button" style="--i: 7; --area: 6 / 4 / span 3 / span 5; --area-m: 11 / 1 / span 4 / span 2">
+							<img
+								src="assets/img/gym/IMG_6810.webp"
+								alt="Dva bežecké pásy pred zelenou stenou s televízorom"
+								data-i18n-attr="alt:g8.alt"
+								loading="lazy"
+								decoding="async"
+							/>
+							<span class="caption"
+								><span
+									><b data-i18n="g8.title">Bežecké pásy</b
+									><small data-i18n="g8.text"
+										>S televízorom pred sebou</small
+									></span
+								><span class="zoom"
+									><svg viewBox="0 0 24 24">
+										<path d="M7 17L17 7M8 7h9v9" /></svg></span
+							></span>
+						</button>
+						<button class="shot reveal zoom" type="button" style="--i: 8; --area: 9 / 1 / span 2 / span 4; --area-m: 11 / 3 / span 2 / span 2">
+							<img
+								src="assets/img/gym/IMG_6821.webp"
+								alt="Kondičná zóna s veslovacím trenažérom, plyo boxami a klietkou"
+								data-i18n-attr="alt:g9.alt"
+								loading="lazy"
+								decoding="async"
+							/>
+							<span class="caption"
+								><span
+									><b data-i18n="g9.title">Kondícia a klietka</b
+									><small data-i18n="g9.text"
+										>Veslo, plyo boxy a bojová klietka</small
+									></span
+								><span class="zoom"
+									><svg viewBox="0 0 24 24">
+										<path d="M7 17L17 7M8 7h9v9" /></svg></span
+							></span>
+						</button>
+						<button class="shot reveal zoom" type="button" style="--i: 9; --area: 9 / 5 / span 2 / span 4; --area-m: 13 / 3 / span 2 / span 2">
+							<img
+								src="assets/img/gym/IMG_6818.webp"
+								alt="Veslovací trenažér Concept2 na hlavnej ploche"
+								data-i18n-attr="alt:g10.alt"
+								loading="lazy"
+								decoding="async"
+							/>
+							<span class="caption"
+								><span
+									><b data-i18n="g10.title">Veslovanie</b
+									><small data-i18n="g10.text"
+										>Concept2 a ďalšie kardio stroje</small
+									></span
+								><span class="zoom"
+									><svg viewBox="0 0 24 24">
+										<path d="M7 17L17 7M8 7h9v9" /></svg></span
+							></span>
+						</button>
+						<button class="shot reveal zoom" type="button" style="--i: 10; --area: 11 / 1 / span 5 / span 4; --area-m: 15 / 1 / span 3 / span 4">
+							<img
+								src="assets/img/gym/IMG_6813.webp"
+								alt="Silová klietka s lavičkami a závesnými popruhmi"
+								data-i18n-attr="alt:g11.alt"
+								loading="lazy"
+								decoding="async"
+							/>
+							<span class="caption"
+								><span
+									><b data-i18n="g11.title">Silová klietka</b
+									><small data-i18n="g11.text"
+										>Hrazdy, lavičky a závesné popruhy</small
+									></span
+								><span class="zoom"
+									><svg viewBox="0 0 24 24">
+										<path d="M7 17L17 7M8 7h9v9" /></svg></span
+							></span>
+						</button>
+						<button class="shot reveal zoom" type="button" style="--i: 11; --area: 11 / 5 / span 3 / span 8; --area-m: 18 / 1 / span 2 / span 2">
+							<img
+								src="assets/img/gym/IMG_6802.webp"
+								alt="Oddychová zóna so stolíkmi a výhľadom do posilňovne"
+								data-i18n-attr="alt:g12.alt"
+								loading="lazy"
+								decoding="async"
+							/>
+							<span class="caption"
+								><span
+									><b data-i18n="g12.title">Oddychová zóna</b
+									><small data-i18n="g12.text"
+										>Posedenie pred tréningom aj po ňom</small
+									></span
+								><span class="zoom"
+									><svg viewBox="0 0 24 24">
+										<path d="M7 17L17 7M8 7h9v9" /></svg></span
+							></span>
+						</button>
+						<button class="shot reveal zoom" type="button" style="--i: 12; --area: 14 / 5 / span 2 / span 4; --area-m: 18 / 3 / span 2 / span 2">
+							<img
+								src="assets/img/gym/IMG_6814.webp"
+								alt="Kladkový stroj, jednoručky a stojan s doplnkami"
+								data-i18n-attr="alt:g13.alt"
+								loading="lazy"
+								decoding="async"
+							/>
+							<span class="caption"
+								><span
+									><b data-i18n="g13.title">Kladky a jednoručky</b
+									><small data-i18n="g13.text"
+										>Všetko na dosah</small
+									></span
+								><span class="zoom"
+									><svg viewBox="0 0 24 24">
+										<path d="M7 17L17 7M8 7h9v9" /></svg></span
+							></span>
+						</button>
+						<button class="shot reveal zoom" type="button" style="--i: 13; --area: 14 / 9 / span 2 / span 4; --area-m: 20 / 1 / span 3 / span 2">
+							<img
+								src="assets/img/gym/IMG_6806.webp"
+								alt="Vstupná chodba so stojanom na obuv"
+								data-i18n-attr="alt:g14.alt"
+								loading="lazy"
+								decoding="async"
+							/>
+							<span class="caption"
+								><span
+									><b data-i18n="g14.title">Vstup</b
+									><small data-i18n="g14.text"
+										>Prezuj sa a môžeš začať</small
+									></span
+								><span class="zoom"
+									><svg viewBox="0 0 24 24">
+										<path d="M7 17L17 7M8 7h9v9" /></svg></span
+							></span>
+						</button>
+						<button class="shot reveal zoom" type="button" style="--i: 14; --area: 16 / 1 / span 3 / span 5; --area-m: 20 / 3 / span 2 / span 2">
+							<img
+								src="assets/img/gym/IMG_6803.webp"
+								alt="Recepcia s výhľadom do posilňovne"
+								data-i18n-attr="alt:g15.alt"
+								loading="lazy"
+								decoding="async"
+							/>
+							<span class="caption"
+								><span
+									><b data-i18n="g15.title">Recepcia</b
+									><small data-i18n="g15.text"
+										>Privítame ťa hneď pri vchode</small
+									></span
+								><span class="zoom"
+									><svg viewBox="0 0 24 24">
+										<path d="M7 17L17 7M8 7h9v9" /></svg></span
+							></span>
+						</button>
+						<button class="shot reveal zoom" type="button" style="--i: 15; --area: 16 / 6 / span 3 / span 3; --area-m: 22 / 3 / span 3 / span 2">
+							<img
+								src="assets/img/gym/IMG_6807.webp"
+								alt="Šatňa so žlto-sivými skrinkami a lavičkami"
+								data-i18n-attr="alt:g16.alt"
+								loading="lazy"
+								decoding="async"
+							/>
+							<span class="caption"
+								><span
+									><b data-i18n="g16.title">Šatne</b
+									><small data-i18n="g16.text"
+										>Skrinky a lavičky</small
+									></span
+								><span class="zoom"
+									><svg viewBox="0 0 24 24">
+										<path d="M7 17L17 7M8 7h9v9" /></svg></span
+							></span>
+						</button>
+						<button class="shot reveal zoom" type="button" style="--i: 16; --area: 16 / 9 / span 3 / span 4; --area-m: 23 / 1 / span 2 / span 2">
+							<img
+								src="assets/img/gym/IMG_6829.webp"
+								alt="Boxovací trenažér pred stenou s logom Universal Gym"
+								data-i18n-attr="alt:g17.alt"
+								loading="lazy"
+								decoding="async"
+							/>
+							<span class="caption"
+								><span
+									><b data-i18n="g17.title">Boxovací trenažér</b
+									><small data-i18n="g17.text"
+										>Na presnosť a rýchlosť úderov</small
+									></span
+								><span class="zoom"
+									><svg viewBox="0 0 24 24">
+										<path d="M7 17L17 7M8 7h9v9" /></svg></span
+							></span>
+						</button>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- ===================== Footer ===================== -->
+		<footer class="site-footer">
+			<div class="container">
+				<div class="footer-grid">
+					<div>
+						<a
+							class="logo"
+							href="index.html"
+							aria-label="UniversalGym – úvod"
+							data-i18n-attr="aria-label:a11y.home"
+						>
+							<span class="logo-mark"
+								><svg viewBox="0 0 24 24" aria-hidden="true">
+									<path
+										d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"
+									/></svg
+							></span>
+							<span class="logo-word">Universal<span>Gym</span></span>
+						</a>
+						<p data-i18n="footer.about">
+							Posilňovňa a bojové športy pod jednou strechou: sila, striking a
+							thajský box pre ženy. Tvoja sila začína tu.
+						</p>
+						<div class="socials">
+							<a href="#" aria-label="Instagram"
+								><svg viewBox="0 0 24 24">
+									<rect x="3" y="3" width="18" height="18" rx="5" />
+									<circle cx="12" cy="12" r="4" />
+									<path d="M17.5 6.5h.01" /></svg
+							></a>
+							<a href="#" aria-label="Facebook"
+								><svg viewBox="0 0 24 24">
+									<path
+										d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+									/></svg
+							></a>
+							<a href="#" aria-label="YouTube"
+								><svg viewBox="0 0 24 24">
+									<path
+										d="M22.5 6.4a2.8 2.8 0 0 0-2-2C18.9 4 12 4 12 4s-6.9 0-8.5.4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 5.6 2.8 2.8 0 0 0 2 2C5.1 20 12 20 12 20s6.9 0 8.5-.4a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-5.6z"
+									/>
+									<path d="M9.8 15.5l5.7-3.5-5.7-3.5z" /></svg
+							></a>
+							<a href="#" aria-label="TikTok"
+								><svg viewBox="0 0 24 24">
+									<path d="M9 12a4 4 0 1 0 4 4V2c.5 2.5 2.5 4.5 5 5" /></svg
+							></a>
+						</div>
+					</div>
+
+					<div>
+						<h4 data-i18n="footer.explore">Preskúmaj</h4>
+						<ul>
+							<li><a href="index.html#about" data-i18n="nav.about">O nás</a></li>
+							<li><a href="index.html#programs" data-i18n="nav.programs">Programy</a></li>
+							<li><a href="index.html#gym" data-i18n="nav.gym">Posilňovňa</a></li>
+							<li><a href="index.html#trainers" data-i18n="nav.trainers">Tréneri</a></li>
+							<li>
+								<a href="index.html#memberships" data-i18n="nav.memberships">Členstvo</a>
+							</li>
+						</ul>
+					</div>
+
+					<div>
+						<h4 data-i18n="footer.members">Pre členov</h4>
+						<ul>
+							<li>
+								<a href="#test-off" data-test-off data-i18n="nav.joinNow">Zaregistruj sa</a>
+							</li>
+							<li>
+								<a href="#test-off" data-test-off data-i18n="nav.login">Prihlásenie</a>
+							</li>
+							<li>
+								<a href="#test-off" data-test-off data-i18n="footer.myQr"
+									>Môj QR kód</a
+								>
+							</li>
+						</ul>
+					</div>
+
+					<div>
+						<h4 data-i18n="footer.loop">Ako k nám?</h4>
+						<ul>
+							<li>Krajná 11/A, 931 01 Šamorín</li>
+							<li>
+								<a href="mailto:info@ugsamorin.sk"
+									>info@ugsamorin.sk</a
+								>
+							</li>
+							<li><a href="tel:+421908308708">+421 908 308 708</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="footer-bottom">
+					<span
+						>© <span data-year>2026</span>
+						<span data-i18n="footer.rights"
+							>UniversalGym. Všetky práva vyhradené.</span
+						></span
+					>
+					<nav
+						aria-label="Právne informácie"
+						data-i18n-attr="aria-label:footer.legal"
+					>
+						<a href="#" data-i18n="footer.privacy">Ochrana súkromia</a>
+						<a href="#" data-i18n="footer.terms">Podmienky</a>
+						<a href="#" data-i18n="footer.rules">Prevádzkový poriadok</a>
+					</nav>
+				</div>
+			</div>
+
+			<p class="footer-word" aria-hidden="true">
+				<span>Universal</span><span class="y">Gym</span>
+			</p>
+		</footer>
+
+		<button
+			class="to-top"
+			type="button"
+			aria-label="Späť hore"
+			data-i18n-attr="aria-label:a11y.toTop"
+		>
+			<svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6" /></svg>
+		</button>
+
+		<!-- Language button (bottom-left) and picker. The picker also opens by itself on the
+		     first visit; the choice is remembered. Handled by assets/js/i18n.js. -->
+		<button
+			class="lang-fab"
+			type="button"
+			data-open-lang
+			aria-label="Jazyk"
+			data-i18n-attr="aria-label:nav.language"
+		>
+			<svg viewBox="0 0 24 24" aria-hidden="true">
+				<circle cx="12" cy="12" r="9" />
+				<path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+			</svg>
+			<span data-lang-current>SK</span>
+		</button>
+
+		<div
+			class="lang-modal"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="lang-modal-title"
+			hidden
+		>
+			<div class="lang-card">
+				<span class="logo-mark"
+					><svg viewBox="0 0 24 24" aria-hidden="true">
+						<path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11" /></svg
+				></span>
+				<!-- Shown in all three languages on purpose: the visitor has not picked one yet. -->
+				<h2 id="lang-modal-title">
+					Vyber si jazyk<span>Choose your language · Válassz nyelvet</span>
+				</h2>
+				<div class="lang-options">
+					<button type="button" data-lang="sk" lang="sk" aria-pressed="true">
+						<b>Slovenčina</b><span>SK</span>
+					</button>
+					<button type="button" data-lang="en" lang="en" aria-pressed="false">
+						<b>English</b><span>EN</span>
+					</button>
+					<button type="button" data-lang="hu" lang="hu" aria-pressed="false">
+						<b>Magyar</b><span>HU</span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Gallery lightbox -->
+		<div
+			class="lightbox"
+			role="dialog"
+			aria-modal="true"
+			aria-label="Prehliadač fotiek"
+			data-i18n-attr="aria-label:lightbox.label"
+			hidden
+		>
+			<button
+				class="lb-btn lb-close"
+				type="button"
+				aria-label="Zavrieť"
+				data-i18n-attr="aria-label:lightbox.close"
+			>
+				<svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" /></svg>
+			</button>
+			<button
+				class="lb-btn lb-prev"
+				type="button"
+				aria-label="Predchádzajúca fotka"
+				data-i18n-attr="aria-label:lightbox.prev"
+			>
+				<svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6" /></svg>
+			</button>
+			<figure>
+				<img src="" alt="" />
+				<figcaption></figcaption>
+			</figure>
+			<button
+				class="lb-btn lb-next"
+				type="button"
+				aria-label="Ďalšia fotka"
+				data-i18n-attr="aria-label:lightbox.next"
+			>
+				<svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" /></svg>
+			</button>
+		</div>
+	</body>
+</html>
