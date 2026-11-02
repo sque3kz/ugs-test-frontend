@@ -1,14 +1,15 @@
-<svg width="512" height="512" enable-background="new" version="1.1" viewBox="59.34 -38.86 1024.32 1024.32" xmlns="http://www.w3.org/2000/svg">
+<svg width="512" height="512" enable-background="new" version="1.1" viewBox="36 -63 1072 1072" xmlns="http://www.w3.org/2000/svg">
 <defs>
 <clipPath id="b">
-<circle cx="573.56" cy="473.19" r="401.49"/>
-<rect x="-5e3" y="-5e3" width="1e4" height="5724.12"/>
+<circle cx="573.56" cy="406.88" r="365.11"/>
+<rect x="-5e3" y="-5e3" width="1e4" height="5684.66"/>
 </clipPath>
 <clipPath id="a">
 <path d="m-7169.5-7169.5h14339v7900.22h-6365.37a54.49 51.62 0 0 1-54.49 51.62v6387.16h-7919.14z"/>
 </clipPath>
 </defs>
 <circle cx="573.56" cy="473.19" r="401.49" fill="#ffc400" stroke="#111" stroke-width="14.34"/>
+<g transform="translate(573.56 879.51) scale(1.0800) translate(-573.56 -783.1)">
 <g clip-path="url(#a)">
 <g clip-path="url(#b)">
 <g transform="translate(-529.194 516.568)">
@@ -48,6 +49,9 @@
 </g>
 </g>
 </g>
+<g clip-path="url(#b)">
 <path d="m803.06 730.72a53.41 50.54 0 0 1-53.42 50.54" fill="none" stroke="#171717" stroke-linecap="round" stroke-width="2.01"/>
 <path d="m801.41 730.72a51.76 48.9 0 0 1-48.9 48.89" fill="none" stroke="#868686" stroke-width="1.43"/>
+</g>
+</g>
 </svg>
